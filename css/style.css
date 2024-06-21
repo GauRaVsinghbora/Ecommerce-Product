@@ -23,13 +23,17 @@
     text-align: center;
 }
 
-.container.Product-collecter{
+.Product-collecter{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 20px;
     margin-bottom: 4rem;
 }
-.container.Product-collecter .Product-box{
+.Product-collecter a{
+    text-decoration: none;
+    color: #000;
+}
+.Product-box{
     background-color: #eeeee6;
     padding: 20px;
     border-radius: 20px;
@@ -42,15 +46,12 @@
     font-size: small;
     letter-spacing: 7px;
 }
-.container.Product-collecter .Product-box img{
+.Product-box img{
     width: 100%;
     filter: drop-shadow( 0 50px 20px #0009);
 }
 
-/* animation */
-.Product-collecter .Product-box img:hover{
-    transform: scale(1.1);
-}
+
 
 
 
@@ -59,55 +60,78 @@
     product_detail
      */
 
-    .main-product {
-        display: flex;
- /* Aligns items at the top */
-        text-align: left; /* Ensures text is aligned to the left within the product info */
-    }
-    
-    .hero-img-box {
-        width: 300px;
-        /* Prevents the box from shrinking */
-    }
-    
-    .hero-img {
-        width: 100%;
-        height: auto; /* Maintains aspect ratio */
-    }
-    
-    .hero-info {
-        flex: 1;
-        padding-left: 20px; /* Adds some space between the image and the info */
-    }
-    
-    .buying-box {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 20px 0;
-    }
-    
-    .check-out {
-        background-color: #f0c040;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    .add-to-cart-box {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        background-color: #e0e0e0;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    .add-to-cart-box i {
-        font-size: 20px;
-    }
-    
+.main-product {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    text-align: left; 
+}
+.hero-img-box {
+    width: 350px;
+    position: relative;
+}
+.hero-img-box::before{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-color: #94817733;
+    content: '';
+    z-index: -10;
+    border-radius: 190px 100px 170px 180px;
+    left: calc(55% - 150px);
+    top: 50px;
+}
+.hero-info{
+    width: 350px;
+    font-size: .9rem;
+}
+.hero-img {
+    width: 100%;
+}
+.hero-info h2{
+    font-size: 3rem;
+}
+.price{
+    font-size: 1rem;
+    letter-spacing: .7rem;
+}
+.check-out{
+    display: inline-block;
+    padding: .6rem 1rem;
+    background-color: #EEEEEB;
+    border-radius: 1rem;
+    margin-right: 1rem;
+}
+.Add-to-cart-box{
+    padding: .6rem 1rem;
+    background-color: #2D2E2C;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+}
+.Add-to-cart-box i{
+    margin-left: 1rem;
+}
+.buying-box{
+    font-size: 1rem;
+    display: flex;
+    width: 90%;
+    margin: .5rem 0 1rem 0;
+    flex-wrap: wrap;
+}
+
+
+/* similar product recomendation*/
+.similar-product{
+    display: grid;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+.similar-product-container{
+    margin-bottom: 4rem;
+}
 
 
 
@@ -115,6 +139,19 @@
 
 
 
+/* animation */
+.Product-box img:hover{
+    transform: scale(1.1);
+}
+.check-out:hover{
+    background-color: #2D2E2C;
+    color: #fff;
+    transform: translatex(.5rem);
+    box-shadow: 0 10px 20px rgb(0,0,0,0.2);
+}
+.Add-to-cart-box:hover{
+    box-shadow: 0 10px 20px rgb(0,0,0,0.3);
+}
 
 
 
@@ -124,17 +161,29 @@
     media queries
      */
 @media (max-width:992px){
-    .container.Product-collecter{
+    .Product-collecter{
         grid-template-columns: repeat(3,1fr);
     }
 }
 @media (max-width:768px){
-    .container.container.Product-collecter{
+    .Product-collecter{
         grid-template-columns: repeat(2,1fr);
     }
 }
 @media (max-width:500px){
-    .container.container.Product-collecter{
+    .Product-collecter{
         grid-template-columns: repeat(1,1fr);
+    }
+    .hero-img-box{
+        width: 100%;
+    }
+    .hero-info{
+        width: 100%;
+    }
+}
+@media(max-width:650px){
+    .main-product{
+        flex-direction: column;
+        align-items: center;
     }
 }
